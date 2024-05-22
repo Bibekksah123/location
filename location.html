@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <div class="containen">
+    <button class="showlocation">show location</button>
+  
+        <p id="pp">show the detail of location</p>
+
+    </div>
+
+</body>
+<script>
+    let showdetail=document.querySelector('#pp');
+  
+  document.querySelector('.showlocation').addEventListener("click",()=>{
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition((positon)=>{
+            console.log(positon);
+ let{longitude,latitude}=positon.coords;
+
+ showdetail.textContent=`the longitude${longitude},and latitude${latitude}`;
+        },(error)=>{
+            showdetail.textContent=error.message;
+  console.log(error.message);
+        })
+    }
+  })
+</script>
+</html>
